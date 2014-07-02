@@ -1,4 +1,4 @@
-emdr-mercury
+eve-data
 ============
 
-Persists the filtered emdr data and provides an api to determine potential items worth trading in
+Provides an api wrapper around the eve static data dump
