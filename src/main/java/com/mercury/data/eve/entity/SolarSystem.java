@@ -1,6 +1,7 @@
 package com.mercury.data.eve.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "mapSolarSystems")
@@ -47,6 +48,23 @@ public class SolarSystem {
 
   public void setSecurityStatus(double securityStatus) {
     this.securityStatus = securityStatus;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getId());
+  }
+
+  @Override
+  public boolean equals(Object otherObject) {
+    if (this == otherObject) {
+      return true;
+    }
+    if (!(otherObject instanceof SolarSystem)) {
+      return false;
+    }
+    SolarSystem otherSolarSystem = (SolarSystem) otherObject;
+    return Objects.equals(this.getId(), otherSolarSystem.getId());
   }
 
   @Override

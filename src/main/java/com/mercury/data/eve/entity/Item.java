@@ -1,6 +1,7 @@
 package com.mercury.data.eve.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "invTypes")
@@ -89,6 +90,23 @@ public class Item {
 
   public void setCapacity(double capacity) {
     this.capacity = capacity;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getId());
+  }
+
+  @Override
+  public boolean equals(Object otherObject) {
+    if (this == otherObject) {
+      return true;
+    }
+    if (!(otherObject instanceof Item)) {
+      return false;
+    }
+    Item otherItem = (Item) otherObject;
+    return Objects.equals(this.getId(), otherItem.getId());
   }
 
   @Override

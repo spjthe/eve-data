@@ -1,6 +1,7 @@
 package com.mercury.data.eve.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "invGroups")
@@ -34,6 +35,23 @@ public class Group {
 
   public String getDescription() {
     return description;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getId());
+  }
+
+  @Override
+  public boolean equals(Object otherObject) {
+    if (this == otherObject) {
+      return true;
+    }
+    if (!(otherObject instanceof Group)) {
+      return false;
+    }
+    Group otherGroup = (Group) otherObject;
+    return Objects.equals(this.getId(), otherGroup.getId());
   }
 
   @Override

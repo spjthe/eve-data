@@ -1,6 +1,7 @@
 package com.mercury.data.eve.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "invMarketGroups")
@@ -46,6 +47,23 @@ public class MarketGroup {
 
   public void setParent(MarketGroup parent) {
     this.parent = parent;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getId());
+  }
+
+  @Override
+  public boolean equals(Object otherObject) {
+    if (this == otherObject) {
+      return true;
+    }
+    if (!(otherObject instanceof MarketGroup)) {
+      return false;
+    }
+    MarketGroup otherMarketGroup = (MarketGroup) otherObject;
+    return Objects.equals(this.getId(), otherMarketGroup.getId());
   }
 
   @Override

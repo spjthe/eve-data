@@ -1,6 +1,7 @@
 package com.mercury.data.eve.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "staStations")
@@ -48,6 +49,23 @@ public class Station {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getId());
+  }
+
+  @Override
+  public boolean equals(Object otherObject) {
+    if (this == otherObject) {
+      return true;
+    }
+    if (!(otherObject instanceof Station)) {
+      return false;
+    }
+    Station otherStation = (Station) otherObject;
+    return Objects.equals(this.getId(), otherStation.getId());
   }
 
   @Override

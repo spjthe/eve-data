@@ -1,6 +1,7 @@
 package com.mercury.data.eve.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "mapRegions")
@@ -24,6 +25,23 @@ public class Region {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getId());
+  }
+
+  @Override
+  public boolean equals(Object otherObject) {
+    if (this == otherObject) {
+      return true;
+    }
+    if (!(otherObject instanceof Region)) {
+      return false;
+    }
+    Region otherRegion = (Region) otherObject;
+    return Objects.equals(this.getId(), otherRegion.getId());
   }
 
   @Override
