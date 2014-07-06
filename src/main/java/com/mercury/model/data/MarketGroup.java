@@ -1,6 +1,8 @@
 package com.mercury.model.data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,6 +22,12 @@ public class MarketGroup {
   @ManyToOne
   @JoinColumn(name = "parentGroupID")
   private MarketGroup parent;
+
+  @OneToMany(mappedBy = "parent")
+    private List<MarketGroup> children = new ArrayList<>();
+
+    @OneToMany(mappedBy = "marketGroup")
+    List<Item> items = new ArrayList<>();
 
   public int getId() {
     return id;
@@ -47,6 +55,22 @@ public class MarketGroup {
 
   public void setParent(MarketGroup parent) {
     this.parent = parent;
+  }
+
+  public List<MarketGroup> getChildren() {
+    return children;
+  }
+
+  public void setChildren(List<MarketGroup> children) {
+    this.children = children;
+  }
+
+  public List<Item> getItems() {
+    return items;
+  }
+
+  public void setItems(List<Item> items) {
+    this.items = items;
   }
 
   @Override
