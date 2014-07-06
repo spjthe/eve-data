@@ -20,18 +20,3 @@ public class App {
     SpringApplication.run(App.class, args);
   }
 }
-
-
-@Configuration
-@ConfigurationProperties(prefix = "spring.ds_eve")
-class DataSourceConfig extends TomcatDataSourceConfiguration {
-  @Bean(name = "dsEveData")
-  public DataSource dataSource() {
-    return super.dataSource();
-  }
-
-  @Bean(name = "jdbcEveData")
-  public JdbcTemplate jdbcTemplate(DataSource dsEveData) {
-    return new JdbcTemplate(dsEveData);
-  }
-}
