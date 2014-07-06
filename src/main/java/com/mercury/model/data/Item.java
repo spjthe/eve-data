@@ -1,4 +1,4 @@
-package com.mercury.data.eve.entity;
+package com.mercury.model.data;
 
 import javax.persistence.*;
 import java.util.Objects;

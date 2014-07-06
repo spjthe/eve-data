@@ -1,21 +1,19 @@
-package com.mercury.data.eve.entity;
+package com.mercury.model.data;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "invGroups")
-public class Group {
+@Table(name = "mapRegions")
+public class Region {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "groupID", nullable = false)
+  @Column(name = "regionID", nullable = false)
   private int id;
 
-  @Column(name = "groupName")
+  @Column(name = "regionName")
   private String name;
-
-  private String description;
 
   public int getId() {
     return id;
@@ -29,14 +27,6 @@ public class Group {
     this.name = name;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(getId());
@@ -47,15 +37,15 @@ public class Group {
     if (this == otherObject) {
       return true;
     }
-    if (!(otherObject instanceof Group)) {
+    if (!(otherObject instanceof Region)) {
       return false;
     }
-    Group otherGroup = (Group) otherObject;
-    return Objects.equals(this.getId(), otherGroup.getId());
+    Region otherRegion = (Region) otherObject;
+    return Objects.equals(this.getId(), otherRegion.getId());
   }
 
   @Override
   public String toString() {
-    return "Group[" + id + "," + name + "]";
+    return "Region[" + id + "," + name + "]";
   }
 }

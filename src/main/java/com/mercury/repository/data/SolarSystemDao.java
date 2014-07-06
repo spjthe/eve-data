@@ -1,4 +1,4 @@
-package com.mercury.data.eve.dao;
+package com.mercury.repository.data;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.mercury.data.eve.entity.SolarSystem;
+import com.mercury.model.data.SolarSystem;
 
 @RepositoryRestResource(collectionResourceRel = "solarSystems", path = "solarSystems")
 public interface SolarSystemDao extends PagingAndSortingRepository<SolarSystem, Integer> {
