@@ -1,6 +1,0 @@
-spring.ds_eve.url=jdbc:mysql://localhost/dbname
-spring.ds_eve.username=dbuser
-spring.ds_eve.password=dbpassword
-spring.ds_eve.driverClassName=com.mysql.jdbc.Driver
-spring.jpa.hibernate.naming_strategy=org.hibernate.cfg.DefaultNamingStrategy
-spring.jpa.show-sql=false

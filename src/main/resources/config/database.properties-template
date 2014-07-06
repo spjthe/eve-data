@@ -1,0 +1,4 @@
+ds_eveData.url=jdbc:mysql://localhost/dbname
+ds_eveData.username=dbuser
+ds_eveData.password=dbpassword
+ds_eveData.driverClassName=com.mysql.jdbc.Driver
