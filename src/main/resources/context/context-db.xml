@@ -3,24 +3,26 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <jpa:repositories base-package="com.mercury.repository.data"/>
+    <jpa:repositories base-package="com.mercury.repository.data"
+                      entity-manager-factory-ref="eveDataEntityManagerFactory"
+                      transaction-manager-ref="eveDataTransactionManager"/>
 
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="eveDataDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${ds_eveData.driverClassName}"/>
         <property name="url" value="${ds_eveData.url}"/>
         <property name="username" value="${ds_eveData.username}"/>
         <property name="password" value="${ds_eveData.password}"/>
     </bean>
 
-    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+    <bean id="eveDataJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="showSql" value="false"/>
         <property name="generateDdl" value="true"/>
         <property name="database" value="MYSQL"/>
     </bean>
 
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+    <bean id="eveDataEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="eveDataDataSource"/>
+        <property name="jpaVendorAdapter" ref="eveDataJpaVendorAdapter"/>
         <!-- spring based scanning for entity classes-->
         <property name="packagesToScan" value="com.mercury.model.data"/>
         <property name="jpaProperties">
@@ -30,6 +32,8 @@
         </property>
     </bean>
 
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
+    <bean id="eveDataTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="eveDataEntityManagerFactory"/>
+    </bean>
 
 </beans>
