@@ -1,9 +1,10 @@
 package com.mercury.model.data;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "invMarketGroups")
@@ -24,10 +25,10 @@ public class MarketGroup {
   private MarketGroup parent;
 
   @OneToMany(mappedBy = "parent")
-    private List<MarketGroup> children = new ArrayList<>();
+  private List<MarketGroup> children = new ArrayList<>();
 
-    @OneToMany(mappedBy = "marketGroup")
-    List<Item> items = new ArrayList<>();
+  @OneToMany(mappedBy = "marketGroup")
+  List<Item> items = new ArrayList<>();
 
   public int getId() {
     return id;

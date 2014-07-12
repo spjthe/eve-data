@@ -1,7 +1,8 @@
 package com.mercury.model.data;
 
-import javax.persistence.*;
 import java.util.Objects;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "staStations")
