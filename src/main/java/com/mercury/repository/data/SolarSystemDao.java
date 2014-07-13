@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 import com.mercury.model.data.SolarSystem;
 
-@RepositoryRestResource(collectionResourceRel = "solarSystems", path = "solarSystems")
+@Repository
 public interface SolarSystemDao extends PagingAndSortingRepository<SolarSystem, Integer> {
 
   SolarSystem findById(@Param("id") int id);
