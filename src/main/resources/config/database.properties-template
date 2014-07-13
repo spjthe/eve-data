@@ -1,0 +1,9 @@
+ds_eveData.url=jdbc:mysql://localhost/dbname
+ds_eveData.username=dbuser
+ds_eveData.password=dbpassword
+ds_eveData.driverClassName=com.mysql.jdbc.Driver
+
+ds_eveMarket.url=jdbc:mysql://localhost/dbname
+ds_eveMarket.username=dbuser
+ds_eveMarket.password=dbpassword
+ds_eveMarket.driverClassName=com.mysql.jdbc.Driver

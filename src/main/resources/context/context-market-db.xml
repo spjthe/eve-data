@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <jpa:repositories base-package="com.mercury.repository.market"
+                      entity-manager-factory-ref="eveMarketEntityManagerFactory"
+                      transaction-manager-ref="eveMarketTransactionManager"/>
+
+    <bean id="eveMarketDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${ds_eveMarket.driverClassName}"/>
+        <property name="url" value="${ds_eveMarket.url}"/>
+        <property name="username" value="${ds_eveMarket.username}"/>
+        <property name="password" value="${ds_eveMarket.password}"/>
+    </bean>
+
+    <bean id="eveMarketJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="showSql" value="false"/>
+        <property name="generateDdl" value="true"/>
+        <property name="database" value="MYSQL"/>
+    </bean>
+
+    <bean id="eveMarketEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="eveMarketDataSource"/>
+        <property name="jpaVendorAdapter" ref="eveMarketJpaVendorAdapter"/>
+        <!-- spring based scanning for entity classes-->
+        <property name="packagesToScan" value="com.mercury.model.market"/>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="eveMarketTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="eveMarketEntityManagerFactory"/>
+    </bean>
+
+</beans>
